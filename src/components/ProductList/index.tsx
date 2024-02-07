@@ -1,6 +1,6 @@
 import { useAppSelector } from '../../redux/hooks';
 
-export default function ProductList() {
+const ProductList: React.FC = () => {
   const items = useAppSelector((state) => state.products.products);
 
   return (
@@ -10,4 +10,6 @@ export default function ProductList() {
       ))}
     </ul>
   );
-}
+};
+
+export default ProductList;
