@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 type Product = {
   id: string;
@@ -17,10 +17,10 @@ export const productSlice = createSlice({
   name: 'products',
   initialState,
   reducers: {
-    addProduct(state, action) {
+    addProduct(state, action: PayloadAction<string>) {
       state.products.push({
         id: new Date().toISOString(),
-        title: action.payload.title,
+        title: action.payload,
       });
     },
   },
