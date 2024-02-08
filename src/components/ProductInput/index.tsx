@@ -26,7 +26,7 @@ export default function ProductInput() {
         value={product}
         onChange={(e) => setProduct(e.target.value)}
         type="text"
-        placeholder="продукт..."
+        placeholder=" введите продукт..."
       />
       <button onClick={handleAddProduct}>✔</button>
       <button onClick={handleCleanInput}>✖</button>

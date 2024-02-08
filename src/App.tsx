@@ -1,21 +1,18 @@
-import Header from './components/Header';
-import ProductInput from './components/ProductInput';
-import Footer from './components/Footer';
-import ProductList from './components/ProductList';
+import ProductPage from './pages/ProductPage/ProductPage';
+import RecipesPage from './pages/RecipesPaage.tsx/RecipesPage';
+
 import styles from './App.module.scss';
+
+import { Routes, Route } from 'react-router-dom';
 
 function App() {
   return (
-    <>
-      <main className={styles.container}>
-        <Header />
-        <section className={styles.product}>
-          <ProductInput />
-          <ProductList />
-        </section>
-        <Footer />
-      </main>
-    </>
+    <div className={styles.container}>
+      <Routes>
+        <Route path="/" element={<ProductPage />} />
+        <Route path="/recipes" element={<RecipesPage />} />
+      </Routes>
+    </div>
   );
 }
 

@@ -1,11 +1,12 @@
 import styles from './Header.module.scss';
+import { Link } from 'react-router-dom';
 
 export default function Header() {
   return (
     <header className={styles.nav}>
-      <p>Главная страница</p>
-      <p>Рецепты</p>
-      <p>Продуктовая база</p>
+      <Link to="">Главная страница</Link>
+      <Link to="/recipes">Рецепты</Link>
+      <Link to="/">Продуктовая база</Link>
     </header>
   );
 }
