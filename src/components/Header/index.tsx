@@ -1,12 +1,18 @@
 import styles from './Header.module.scss';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 export default function Header() {
   return (
     <header className={styles.nav}>
-      <Link to="">Главная страница</Link>
-      <Link to="/recipes">Рецепты</Link>
-      <Link to="/">Продуктовая база</Link>
+      <NavLink to="/" className={({ isActive }) => (isActive ? styles.active : '')}>
+        Главная страница
+      </NavLink>
+      <NavLink to="/recipes" className={({ isActive }) => (isActive ? styles.active : '')}>
+        Рецепты
+      </NavLink>
+      <NavLink to="/products" className={({ isActive }) => (isActive ? styles.active : '')}>
+        Продуктовая база
+      </NavLink>
     </header>
   );
 }
