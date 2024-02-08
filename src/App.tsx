@@ -9,8 +9,10 @@ function App() {
     <>
       <main className={styles.container}>
         <Header />
-        <ProductInput />
-        <ProductList />
+        <section className={styles.product}>
+          <ProductInput />
+          <ProductList />
+        </section>
         <Footer />
       </main>
     </>

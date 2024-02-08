@@ -11,8 +11,7 @@ export default function ProductInput() {
 
   const handleAddProduct = () => {
     dispatch(addProduct(product));
-    setProduct('');
-    refInput.current?.focus();
+    handleCleanInput();
   };
 
   const handleCleanInput = () => {
@@ -29,20 +28,8 @@ export default function ProductInput() {
         type="text"
         placeholder="продукт..."
       />
-      <img
-        width={20}
-        height={20}
-        onClick={handleAddProduct}
-        src="/src/assets/check.svg"
-        alt="check"
-      />
-      <img
-        onClick={handleCleanInput}
-        width={20}
-        height={20}
-        src="/src/assets/cross.svg"
-        alt="cross"
-      />
+      <button onClick={handleAddProduct}>✔</button>
+      <button onClick={handleCleanInput}>✖</button>
     </section>
   );
 }
