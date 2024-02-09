@@ -1,0 +1,49 @@
+.container {
+  position: relative;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 200px;
+  height: 60px;
+  padding: 15px;
+  padding-right: 15px;
+
+  border: 0.5px solid rgba(128, 128, 128, 0.5);
+  border-radius: 16px;
+  box-shadow: 3px 2px 2px rgba(135, 206, 235, 0.5);
+
+  section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+
+    h4 {
+      color: black;
+    }
+
+    p {
+      color: black;
+      font-size: 10px;
+    }
+
+    span {
+      font-size: 14px;
+    }
+
+    img {
+      opacity: 0;
+      cursor: pointer;
+      position: absolute;
+      right: 5px;
+      top: 5px;
+    }
+  }
+
+  &:hover img {
+    opacity: 1;
+  }
+}
