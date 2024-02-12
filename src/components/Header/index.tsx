@@ -5,13 +5,13 @@ export default function Header() {
   return (
     <header className={styles.nav}>
       <NavLink to="/" className={({ isActive }) => (isActive ? styles.active : '')}>
-        Главная страница
+        главная
       </NavLink>
       <NavLink to="/recipes" className={({ isActive }) => (isActive ? styles.active : '')}>
-        Рецепты
+        рецепты
       </NavLink>
       <NavLink to="/products" className={({ isActive }) => (isActive ? styles.active : '')}>
-        Продуктовая база
+        продукты
       </NavLink>
     </header>
   );
