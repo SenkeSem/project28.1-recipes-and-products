@@ -11,9 +11,11 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import productReducer from './productSlice';
+import recipesReducer from './recipeSlice';
 
 const rootReducer = combineReducers({
   products: productReducer,
+  recipes: recipesReducer,
 });
 
 const persistConfig = {

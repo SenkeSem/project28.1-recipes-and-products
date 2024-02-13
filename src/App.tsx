@@ -1,6 +1,6 @@
 import ProductPage from './pages/ProductPage/ProductPage';
 import RecipesPage from './pages/RecipesPage.tsx/RecipesPage';
-import SingleProductPage from './pages/SinglePage/SingleProductPage';
+import SingleProductPage from './pages/SingleProductPage/SingleProductPage';
 import MainPage from './pages/MainPage/MainPage';
 import SingleRecipesPage from './pages/SingleRecipesPage/SingleRecipesPage';
 
