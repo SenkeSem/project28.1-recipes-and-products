@@ -9,7 +9,7 @@ const RecipeForm = () => {
 
   const dispatch = useAppDispatch();
 
-  const handleAddRecipe = (e) => {
+  const handleAddRecipe = (e: React.SyntheticEvent<HTMLInputElement>) => {
     e.preventDefault;
     dispatch(
       addRecipe({
@@ -44,7 +44,7 @@ const RecipeForm = () => {
             onChange={(e) => setImageUrl(e.target.value)}
           />
         </label>
-        <input type="button" value="✔" onClick={(e) => handleAddRecipe(e)} />
+        <input type="button" value="✔" onClick={handleAddRecipe} />
         <input type="reset" value="✖" />
       </form>
     </div>

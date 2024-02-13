@@ -1,9 +1,25 @@
 import styles from './RecipeCard.module.scss';
+import { Link } from 'react-router-dom';
 
-const RecipeCard = () => {
+interface Props {
+  id: string | undefined;
+  title: string;
+  handleRemoveRecupe: () => void;
+}
+
+const RecipeCard = ({ id, title, handleRemoveRecupe }: Props) => {
   return (
     <div className={styles.container}>
-      <h2>Омлет</h2>
+      <Link to={`/recipes/${id}`}>
+        <h2>{title}</h2>
+      </Link>
+      <img
+        width={24}
+        height={24}
+        src="/src/assets/remove.svg"
+        alt="remove"
+        onClick={handleRemoveRecupe}
+      />
     </div>
   );
 };

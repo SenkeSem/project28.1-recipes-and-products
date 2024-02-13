@@ -3,21 +3,21 @@ import Footer from '../../components/Footer';
 
 import styles from './SingleRecipesPage.module.scss';
 
-// import { useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+import { useAppSelector } from '../../redux/hooks';
 
 const SingleRecipesPage: React.FC = () => {
-  // const { title } = useParams();
+  const { id } = useParams();
+
+  const recipe = useAppSelector((state) => state.recipes.recipes).find((obj) => obj.id === id);
 
   return (
     <div className={styles.container}>
       <Header />
       <main>
-        <img
-          src="https://images.pexels.com/photos/1437268/pexels-photo-1437268.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-          alt="photo"
-        />
+        <img src={recipe?.imageUrl} alt="photo" />
         <section>
-          <h3>Рецепт простенького омлета на 3 яйца</h3>
+          <h3>{recipe?.title}</h3>
           <i>
             Омлет на молоке - один из самых вкусных, простых и любимых омлетов. Молоко делает омлет
             нежным, лёгким, достаточно пышным и очень вкусным. Омлет на молоке - прекрасный вариант

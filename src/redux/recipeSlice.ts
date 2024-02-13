@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 type Recipe = {
-  id: string;
+  id?: string;
   title: string;
   imageUrl: string;
   subtitle?: string;
@@ -30,12 +30,12 @@ export const recipeSlice = createSlice({
       });
     },
 
-    // removeProduct(state, action: PayloadAction<string>) {
-    //   state.products = state.products.filter((prod) => prod.id !== action.payload);
-    // },
+    removeRecipe(state, action: PayloadAction<string | undefined>) {
+      state.recipes = state.recipes.filter((prod) => prod.id !== action.payload);
+    },
   },
 });
 
-export const { addRecipe } = recipeSlice.actions;
+export const { addRecipe, removeRecipe } = recipeSlice.actions;
 
 export default recipeSlice.reducer;

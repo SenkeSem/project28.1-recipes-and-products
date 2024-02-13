@@ -1,4 +1,6 @@
 .container {
+  position: relative;
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -10,4 +12,20 @@
   background: linear-gradient(to bottom right, blue, pink);
 
   color: aliceblue;
+
+  img {
+    opacity: 0;
+    cursor: pointer;
+    position: absolute;
+    right: 5px;
+    top: 5px;
+  }
+
+  &:hover img {
+    opacity: 1;
+  }
+
+  a {
+    color: white;
+  }
 }
