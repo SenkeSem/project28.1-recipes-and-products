@@ -13,7 +13,7 @@ export default function ProductInput() {
   const [carb, setCarb] = useState('');
 
   const handleAddProduct = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    e.preventDefault;
+    e.preventDefault();
     dispatch(
       addProduct({
         id: new Date().toISOString(),
@@ -24,11 +24,10 @@ export default function ProductInput() {
         carb: carb,
       }),
     );
-    handleCleanInput(e);
   };
 
   const handleCleanInput = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    e.preventDefault;
+    e.preventDefault();
     setTitle('');
     setCalories('');
     setProtein('');
@@ -85,8 +84,8 @@ export default function ProductInput() {
           />
         </label>
         <article>
-          <button onClick={(e) => handleAddProduct(e)}>✔</button>
-          <button onClick={(e) => handleCleanInput(e)}>✖</button>
+          <button onClick={handleAddProduct}>✔</button>
+          <button onClick={handleCleanInput}>✖</button>
         </article>
       </form>
     </section>

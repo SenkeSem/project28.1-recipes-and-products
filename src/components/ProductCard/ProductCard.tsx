@@ -10,14 +10,14 @@ interface Props {
   handleRemoveProduct?: () => void;
 }
 
-const ProductCard = ({ id, title, handleRemoveProduct }: Props) => {
+const ProductCard = ({ id, handleRemoveProduct }: Props) => {
   const product = useAppSelector((state) => state.products.products).find((item) => item.id === id);
 
   return (
     <div className={styles.container}>
       <section>
-        <Link to={`/products/${id}`}>
-          <h4>{title}</h4>
+        <Link to={`/products/${product?.id}`}>
+          <h4>{product?.title}</h4>
         </Link>
       </section>
       <section>
