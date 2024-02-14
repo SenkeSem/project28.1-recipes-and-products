@@ -3,6 +3,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 type Product = {
   id: string;
   title: string;
+  subtitle?: string;
   calories: string;
   protein: string;
   fat: string;
@@ -34,6 +35,15 @@ export const productSlice = createSlice({
     removeProduct(state, action: PayloadAction<string>) {
       state.products = state.products.filter((prod) => prod.id !== action.payload);
     },
+    // writeSubtitle(state, action: PayloadAction<Product>) {
+    //   state.products = state.products.map((product) => {
+    //     if (product.id === action.payload.id) {
+    //       product.subtitle = action.payload.subtitle;
+    //     } else {
+    //       return product;
+    //     }
+    //   });
+    // },
   },
 });
 

@@ -16,6 +16,28 @@
     background-color: white;
     box-shadow: 10px 10px black;
 
+    article {
+      display: flex;
+      flex-direction: row;
+      align-items: start;
+      justify-content: space-between;
+      width: 70%;
+      height: auto;
+
+      padding: 5px;
+      margin-bottom: 10px;
+
+      textarea {
+        width: 90%;
+        height: 25vh;
+      }
+
+      img {
+        cursor: pointer;
+        margin: 0;
+      }
+    }
+
     p {
       color: gray;
     }

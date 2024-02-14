@@ -5,13 +5,22 @@ import styles from './SingleProductPage.module.scss';
 
 import { useParams } from 'react-router-dom';
 import { useAppSelector } from '../../redux/hooks';
+// import { writeSubtitle } from '../../redux/productSlice';
+import { useState } from 'react';
 
 const SingleProductPage: React.FC = () => {
   const { id } = useParams();
 
-  const product = useAppSelector((state) => state.products.products).find((item) => item.id === id);
+  const [text, setText] = useState('');
+  const [isEdit, setIsEdit] = useState(false);
 
-  console.log(id);
+  // const dispatch = useAppDispatch();
+
+  const handleEdit = () => {
+    setIsEdit(!isEdit);
+  };
+
+  const product = useAppSelector((state) => state.products.products).find((item) => item.id === id);
 
   return (
     <div className={styles.container}>
@@ -24,11 +33,25 @@ const SingleProductPage: React.FC = () => {
           alt="photo"
         />
         <h1>{product?.title}</h1>
-        <p>
-          Пова́ренная соль, или пищева́я соль — пищевой продукт, представляющий собой бесцветные
-          кристаллы. Соль природного происхождения почти всегда имеет примеси других минеральных
-          солей, которые могут придавать ей оттенки разных цветов
-        </p>
+
+        {isEdit ? (
+          <article>
+            <textarea value={text} onChange={(e) => setText(e.target.value)}></textarea>
+            <button onClick={handleEdit}>✔</button>
+          </article>
+        ) : (
+          <article>
+            <p>{text}</p>
+            <img
+              width={20}
+              height={20}
+              src="/src/assets/pencil.svg"
+              alt="pencil"
+              onClick={handleEdit}
+            />
+          </article>
+        )}
+
         <h3>КБЖУ</h3>
         <ul>
           <li>{product?.calories} гр.</li>
@@ -36,7 +59,6 @@ const SingleProductPage: React.FC = () => {
           <li>{product?.fat} гр.</li>
           <li>{product?.carb} гр.</li>
         </ul>
-        <h4>Стоимость</h4>
       </div>
       <Footer />
     </div>
