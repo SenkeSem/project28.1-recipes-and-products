@@ -24,6 +24,7 @@ export default function ProductInput() {
         carb: carb,
       }),
     );
+    handleCleanInput(e);
   };
 
   const handleCleanInput = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
