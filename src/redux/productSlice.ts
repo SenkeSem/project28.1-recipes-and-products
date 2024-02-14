@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 type Product = {
-  id: string;
+  id?: string;
   title: string;
   calories: string;
   protein: string;
