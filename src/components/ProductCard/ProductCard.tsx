@@ -11,9 +11,7 @@ interface Props {
 }
 
 const ProductCard = ({ id, title, handleRemoveProduct }: Props) => {
-  const product = useAppSelector((state) => state.products.products);
-
-  const { calories, protein, fat, carb } = product.find((item) => item.id === id);
+  const product = useAppSelector((state) => state.products.products).find((item) => item.id === id);
 
   return (
     <div className={styles.container}>
@@ -25,7 +23,7 @@ const ProductCard = ({ id, title, handleRemoveProduct }: Props) => {
       <section>
         <p>К/Б/Ж/У</p>
         <span>
-          {calories}/{protein}/{fat}/{carb}
+          {product?.calories}/{product?.protein}/{product?.fat}/{product?.carb}
         </span>
         <img
           onClick={handleRemoveProduct}
