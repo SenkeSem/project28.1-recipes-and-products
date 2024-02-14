@@ -23,7 +23,7 @@ export const productSlice = createSlice({
   reducers: {
     addProduct(state, action: PayloadAction<Product>) {
       state.products.push({
-        id: new Date().toISOString(),
+        id: action.payload.id,
         title: action.payload.title,
         calories: action.payload.calories,
         protein: action.payload.protein,

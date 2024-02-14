@@ -16,6 +16,7 @@ export default function ProductInput() {
     e.preventDefault;
     dispatch(
       addProduct({
+        id: new Date().toISOString(),
         title: title,
         calories: calories,
         protein: protein,
