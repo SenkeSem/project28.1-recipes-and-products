@@ -4,10 +4,10 @@ import styles from './ProductCard.module.scss';
 import { useAppSelector } from '../../redux/hooks';
 
 interface Props {
-  id: string;
-  item: object;
-  title: string;
-  handleRemoveProduct: () => void;
+  id?: string;
+  item?: object;
+  title?: string;
+  handleRemoveProduct?: () => void;
 }
 
 const ProductCard = ({ id, title, handleRemoveProduct }: Props) => {
