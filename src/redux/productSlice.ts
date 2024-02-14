@@ -1,8 +1,12 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 type Product = {
-  id: string;
+  id?: string;
   title: string;
+  calories: string;
+  protein: string;
+  fat: string;
+  carb: string;
 };
 
 type ProductState = {
@@ -17,10 +21,14 @@ export const productSlice = createSlice({
   name: 'products',
   initialState,
   reducers: {
-    addProduct(state, action: PayloadAction<string>) {
+    addProduct(state, action: PayloadAction<Product>) {
       state.products.push({
         id: new Date().toISOString(),
-        title: action.payload,
+        title: action.payload.title,
+        calories: action.payload.calories,
+        protein: action.payload.protein,
+        fat: action.payload.fat,
+        carb: action.payload.carb,
       });
     },
     removeProduct(state, action: PayloadAction<string>) {

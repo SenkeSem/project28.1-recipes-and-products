@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 
 import styles from './ProductCard.module.scss';
+import { useAppSelector } from '../../redux/hooks';
 
 interface Props {
   id: string;
@@ -10,6 +11,10 @@ interface Props {
 }
 
 const ProductCard = ({ id, title, handleRemoveProduct }: Props) => {
+  const product = useAppSelector((state) => state.products.products);
+
+  const { calories, protein, fat, carb } = product.find((item) => item.id === id);
+
   return (
     <div className={styles.container}>
       <section>
@@ -18,8 +23,10 @@ const ProductCard = ({ id, title, handleRemoveProduct }: Props) => {
         </Link>
       </section>
       <section>
-        <p>Б/Ж/У/К</p>
-        <span>15/7/33/136</span>
+        <p>К/Б/Ж/У</p>
+        <span>
+          {calories}/{protein}/{fat}/{carb}
+        </span>
         <img
           onClick={handleRemoveProduct}
           width={17}
