@@ -4,23 +4,32 @@ import Footer from '../../components/Footer';
 import styles from './SingleProductPage.module.scss';
 
 import { useParams } from 'react-router-dom';
-import { useAppSelector } from '../../redux/hooks';
-// import { writeSubtitle } from '../../redux/productSlice';
+import { useAppSelector, useAppDispatch } from '../../redux/hooks';
+import { writeSubtitle } from '../../redux/productSlice';
 import { useState } from 'react';
 
 const SingleProductPage: React.FC = () => {
   const { id } = useParams();
 
+  const dispatch = useAppDispatch();
+  const product = useAppSelector((state) => state.products.products).find((item) => item.id === id);
+
   const [text, setText] = useState('');
   const [isEdit, setIsEdit] = useState(false);
-
-  // const dispatch = useAppDispatch();
 
   const handleEdit = () => {
     setIsEdit(!isEdit);
   };
 
-  const product = useAppSelector((state) => state.products.products).find((item) => item.id === id);
+  const handleRewriteSubtitle = () => {
+    dispatch(
+      writeSubtitle({
+        id: id,
+        subtitle: text,
+      }),
+    );
+    handleEdit();
+  };
 
   return (
     <div className={styles.container}>
@@ -37,11 +46,12 @@ const SingleProductPage: React.FC = () => {
         {isEdit ? (
           <article>
             <textarea value={text} onChange={(e) => setText(e.target.value)}></textarea>
-            <button onClick={handleEdit}>✔</button>
+            <button onClick={handleRewriteSubtitle}>✔</button>
+            <button onClick={handleEdit}>✖</button>
           </article>
         ) : (
           <article>
-            <p>{text}</p>
+            <p>{product?.subtitle}</p>
             <img
               width={20}
               height={20}

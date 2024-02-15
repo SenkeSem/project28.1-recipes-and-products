@@ -3,11 +3,16 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 type Product = {
   id: string;
   title: string;
-  subtitle?: string;
+  subtitle?: string | null;
   calories: string;
   protein: string;
   fat: string;
   carb: string;
+};
+
+type SubtitleObject = {
+  id?: string;
+  subtitle?: string | undefined;
 };
 
 type ProductState = {
@@ -35,18 +40,16 @@ export const productSlice = createSlice({
     removeProduct(state, action: PayloadAction<string>) {
       state.products = state.products.filter((prod) => prod.id !== action.payload);
     },
-    // writeSubtitle(state, action: PayloadAction<Product>) {
-    //   state.products = state.products.map((product) => {
-    //     if (product.id === action.payload.id) {
-    //       product.subtitle = action.payload.subtitle;
-    //     } else {
-    //       return product;
-    //     }
-    //   });
-    // },
+    writeSubtitle(state, action: PayloadAction<SubtitleObject>) {
+      state.products.map((prod) => {
+        if (prod.id === action.payload.id) {
+          prod.subtitle = action.payload.subtitle;
+        }
+      });
+    },
   },
 });
 
-export const { addProduct, removeProduct } = productSlice.actions;
+export const { addProduct, removeProduct, writeSubtitle } = productSlice.actions;
 
 export default productSlice.reducer;
