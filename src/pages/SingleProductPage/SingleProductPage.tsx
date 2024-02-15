@@ -55,7 +55,7 @@ const SingleProductPage: React.FC = () => {
             <img
               width={20}
               height={20}
-              src="/src/assets/pencil.svg"
+              src="/../src/assets/pencil.svg"
               alt="pencil"
               onClick={handleEdit}
             />
