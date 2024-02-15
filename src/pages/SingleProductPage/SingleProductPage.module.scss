@@ -3,10 +3,10 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  flex-grow: 1;
+  background-color: #f5d04e;
 
   height: 100vh;
-
-  background-color: #f5d04e;
 
   .card {
     padding: 20px;
@@ -40,6 +40,26 @@
 
     p {
       color: gray;
+    }
+
+    .preSubtitle {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-direction: row;
+      gap: 20px;
+
+      width: 100%;
+
+      padding: 5px;
+      border-radius: 5px;
+      border: 1px dashed black;
+    }
+
+    .mainSubtitle {
+      img {
+        margin-left: 10px;
+      }
     }
 
     img {

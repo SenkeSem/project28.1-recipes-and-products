@@ -51,14 +51,31 @@ const SingleProductPage: React.FC = () => {
           </article>
         ) : (
           <article>
-            <p>{product?.subtitle}</p>
-            <img
-              width={20}
-              height={20}
-              src="/../src/assets/pencil.svg"
-              alt="pencil"
-              onClick={handleEdit}
-            />
+            {!product?.subtitle ? (
+              <div className={styles.preSubtitle}>
+                <p>Укажите описание продукта</p>
+                <img
+                  width={20}
+                  height={20}
+                  src="/../src/assets/pencil.svg"
+                  alt="pencil"
+                  onClick={handleEdit}
+                />
+              </div>
+            ) : (
+              <div className={styles.mainSubtitle}>
+                <p>
+                  {product?.subtitle}{' '}
+                  <img
+                    width={20}
+                    height={20}
+                    src="/../src/assets/pencil.svg"
+                    alt="pencil"
+                    onClick={handleEdit}
+                  />
+                </p>
+              </div>
+            )}
           </article>
         )}
 
