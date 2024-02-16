@@ -8,11 +8,17 @@ type Product = {
   protein: string;
   fat: string;
   carb: string;
+  imageUrl?: string;
 };
 
 type SubtitleObject = {
   id?: string;
   subtitle?: string | undefined;
+};
+
+type imageUrlObject = {
+  id?: string;
+  imageUrl?: string | undefined;
 };
 
 type ProductState = {
@@ -47,9 +53,16 @@ export const productSlice = createSlice({
         }
       });
     },
+    writeUrl(state, action: PayloadAction<imageUrlObject>) {
+      state.products.map((prod) => {
+        if (prod.id === action.payload.id) {
+          prod.imageUrl = action.payload.imageUrl;
+        }
+      });
+    },
   },
 });
 
-export const { addProduct, removeProduct, writeSubtitle } = productSlice.actions;
+export const { addProduct, removeProduct, writeSubtitle, writeUrl } = productSlice.actions;
 
 export default productSlice.reducer;

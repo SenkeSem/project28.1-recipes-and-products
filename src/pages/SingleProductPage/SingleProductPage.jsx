@@ -5,53 +5,82 @@ import styles from './SingleProductPage.module.scss';
 
 import { useParams } from 'react-router-dom';
 import { useAppSelector, useAppDispatch } from '../../redux/hooks';
-import { writeSubtitle } from '../../redux/productSlice';
+import { writeSubtitle, writeUrl } from '../../redux/productSlice';
 import { useState } from 'react';
 
-const SingleProductPage: React.FC = () => {
+const SingleProductPage = () => {
   const { id } = useParams();
 
   const dispatch = useAppDispatch();
   const product = useAppSelector((state) => state.products.products).find((item) => item.id === id);
 
-  const [text, setText] = useState('');
+  const { title, subtitle, calories, protein, fat, carb, imageUrl } = product;
+
   const [isEdit, setIsEdit] = useState(false);
+  const [isOpenUrlInput, setIsOpenUrlInput] = useState(false);
 
   const handleEdit = () => {
     setIsEdit(!isEdit);
   };
 
-  const handleRewriteSubtitle = () => {
+  const handleRewriteSubtitle = (e) => {
     dispatch(
       writeSubtitle({
         id: id,
-        subtitle: text,
+        subtitle: e.target.value,
       }),
     );
-    handleEdit();
+  };
+
+  const handleRewriteUrl = (e) => {
+    dispatch(
+      writeUrl({
+        id: id,
+        imageUrl: e.target.value,
+      }),
+    );
+  };
+
+  const handleOpenUrlInput = () => {
+    setIsOpenUrlInput(!isOpenUrlInput);
   };
 
   return (
     <div className={styles.container}>
       <Header />
       <div className={styles.card}>
-        <img
-          width={140}
-          height={140}
-          src="https://cdn.ime.by/UserFiles/images/catalog/Goods/8031/00118031/norm/00118031.n_1.png"
-          alt="photo"
-        />
-        <h1>{product?.title}</h1>
+        {imageUrl ? (
+          <div>
+            <img width={140} height={140} src={imageUrl} alt="photo" />
+          </div>
+        ) : (
+          <div className={styles.notPhoto}>
+            {isOpenUrlInput ? (
+              <div className={styles.urlInput}>
+                <input
+                  value={imageUrl}
+                  type="text"
+                  placeholder="введите url картинки"
+                  onChange={handleRewriteUrl}
+                />
+                <button>📌</button>
+              </div>
+            ) : (
+              <button onClick={handleOpenUrlInput}>📷</button>
+            )}
+          </div>
+        )}
+
+        <h1>{title}</h1>
 
         {isEdit ? (
           <article>
-            <textarea value={text} onChange={(e) => setText(e.target.value)}></textarea>
-            <button onClick={handleRewriteSubtitle}>✔</button>
-            <button onClick={handleEdit}>✖</button>
+            <textarea value={subtitle} onChange={handleRewriteSubtitle}></textarea>
+            <button onClick={handleEdit}>📌</button>
           </article>
         ) : (
           <article>
-            {!product?.subtitle ? (
+            {!subtitle ? (
               <div className={styles.preSubtitle}>
                 <p>Укажите описание продукта</p>
                 <img
@@ -65,7 +94,7 @@ const SingleProductPage: React.FC = () => {
             ) : (
               <div className={styles.mainSubtitle}>
                 <p>
-                  {product?.subtitle}{' '}
+                  {subtitle}
                   <img
                     width={20}
                     height={20}
@@ -81,10 +110,10 @@ const SingleProductPage: React.FC = () => {
 
         <h3>КБЖУ</h3>
         <ul>
-          <li>{product?.calories} гр.</li>
-          <li>{product?.protein} гр.</li>
-          <li>{product?.fat} гр.</li>
-          <li>{product?.carb} гр.</li>
+          <li>{calories} гр.</li>
+          <li>{protein} гр.</li>
+          <li>{fat} гр.</li>
+          <li>{carb} гр.</li>
         </ul>
       </div>
       <Footer />
