@@ -11,12 +11,12 @@ type Product = {
   imageUrl?: string;
 };
 
-type SubtitleObject = {
+export type SubtitleObject = {
   id?: string;
   subtitle?: string | undefined;
 };
 
-type imageUrlObject = {
+export type imageUrlObject = {
   id?: string;
   imageUrl?: string | undefined;
 };

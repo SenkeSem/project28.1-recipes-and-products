@@ -14,8 +14,6 @@ const SingleProductPage = () => {
   const dispatch = useAppDispatch();
   const product = useAppSelector((state) => state.products.products).find((item) => item.id === id);
 
-  const { title, subtitle, calories, protein, fat, carb, imageUrl } = product;
-
   const [isEdit, setIsEdit] = useState(false);
   const [isOpenUrlInput, setIsOpenUrlInput] = useState(false);
 
@@ -49,16 +47,16 @@ const SingleProductPage = () => {
     <div className={styles.container}>
       <Header />
       <div className={styles.card}>
-        {imageUrl ? (
+        {product?.imageUrl ? (
           <div>
-            <img width={140} height={140} src={imageUrl} alt="photo" />
+            <img width={140} height={140} src={product?.imageUrl} alt="photo" />
           </div>
         ) : (
           <div className={styles.notPhoto}>
             {isOpenUrlInput ? (
               <div className={styles.urlInput}>
                 <input
-                  value={imageUrl}
+                  value={product?.imageUrl}
                   type="text"
                   placeholder="введите url картинки"
                   onChange={handleRewriteUrl}
@@ -71,16 +69,16 @@ const SingleProductPage = () => {
           </div>
         )}
 
-        <h1>{title}</h1>
+        <h1>{product?.title}</h1>
 
         {isEdit ? (
           <article>
-            <textarea value={subtitle} onChange={handleRewriteSubtitle}></textarea>
+            <textarea value={product?.subtitle} onChange={handleRewriteSubtitle}></textarea>
             <button onClick={handleEdit}>📌</button>
           </article>
         ) : (
           <article>
-            {!subtitle ? (
+            {!product?.subtitle ? (
               <div className={styles.preSubtitle}>
                 <p>Укажите описание продукта</p>
                 <img
@@ -94,7 +92,7 @@ const SingleProductPage = () => {
             ) : (
               <div className={styles.mainSubtitle}>
                 <p>
-                  {subtitle}
+                  {product?.subtitle}
                   <img
                     width={20}
                     height={20}
@@ -110,10 +108,10 @@ const SingleProductPage = () => {
 
         <h3>КБЖУ</h3>
         <ul>
-          <li>{calories} гр.</li>
-          <li>{protein} гр.</li>
-          <li>{fat} гр.</li>
-          <li>{carb} гр.</li>
+          <li>{product?.calories} гр.</li>
+          <li>{product?.protein} гр.</li>
+          <li>{product?.fat} гр.</li>
+          <li>{product?.carb} гр.</li>
         </ul>
       </div>
       <Footer />
