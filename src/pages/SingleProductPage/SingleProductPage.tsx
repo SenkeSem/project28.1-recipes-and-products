@@ -5,6 +5,8 @@ import Footer from '../../components/Footer';
 
 import styles from './SingleProductPage.module.scss';
 
+import NutritionChart from '../../components/NutritionChart/NutritionChart';
+
 import { useParams } from 'react-router-dom';
 import { useAppSelector, useAppDispatch } from '../../redux/hooks';
 import { writeSubtitle, writeUrl } from '../../redux/productSlice';
@@ -18,6 +20,8 @@ const SingleProductPage = () => {
 
   const [isEdit, setIsEdit] = useState(false);
   const [isOpenUrlInput, setIsOpenUrlInput] = useState(false);
+
+  const { subtitle, calories, protein, fat, carb, imageUrl } = product;
 
   const handleEdit = () => {
     setIsEdit(!isEdit);
@@ -49,16 +53,16 @@ const SingleProductPage = () => {
     <div className={styles.container}>
       <Header />
       <div className={styles.card}>
-        {product?.imageUrl ? (
+        {imageUrl ? (
           <div>
-            <img width={140} height={140} src={product?.imageUrl} alt="photo" />
+            <img width={140} height={140} src={imageUrl} alt="photo" />
           </div>
         ) : (
           <div className={styles.notPhoto}>
             {isOpenUrlInput ? (
               <div className={styles.urlInput}>
                 <input
-                  value={product?.imageUrl}
+                  value={imageUrl}
                   type="text"
                   placeholder="введите url картинки"
                   onChange={handleRewriteUrl}
@@ -75,12 +79,12 @@ const SingleProductPage = () => {
 
         {isEdit ? (
           <article>
-            <textarea value={product?.subtitle} onChange={handleRewriteSubtitle}></textarea>
+            <textarea value={subtitle} onChange={handleRewriteSubtitle}></textarea>
             <button onClick={handleEdit}>📌</button>
           </article>
         ) : (
           <article>
-            {!product?.subtitle ? (
+            {!subtitle ? (
               <div className={styles.preSubtitle}>
                 <p>Укажите описание продукта</p>
                 <img
@@ -94,7 +98,7 @@ const SingleProductPage = () => {
             ) : (
               <div className={styles.mainSubtitle}>
                 <p>
-                  {product?.subtitle}
+                  {subtitle}
                   <img
                     width={20}
                     height={20}
@@ -107,14 +111,7 @@ const SingleProductPage = () => {
             )}
           </article>
         )}
-
-        <h3>КБЖУ</h3>
-        <ul>
-          <li>{product?.calories} гр.</li>
-          <li>{product?.protein} гр.</li>
-          <li>{product?.fat} гр.</li>
-          <li>{product?.carb} гр.</li>
-        </ul>
+        <NutritionChart calories={calories} protein={protein} fat={fat} carb={carb} />
       </div>
       <Footer />
     </div>

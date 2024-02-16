@@ -61,7 +61,7 @@ export default function ProductInput() {
           белки:
           <input
             type="text"
-            placeholder="12,6"
+            placeholder="12.6"
             value={protein}
             onChange={(e) => setProtein(e.target.value)}
           />
@@ -70,7 +70,7 @@ export default function ProductInput() {
           жиры:
           <input
             type="text"
-            placeholder="3,3"
+            placeholder="3.3"
             value={fat}
             onChange={(e) => setFat(e.target.value)}
           />
@@ -79,7 +79,7 @@ export default function ProductInput() {
           углеводы:
           <input
             type="text"
-            placeholder="57,1"
+            placeholder="57.1"
             value={carb}
             onChange={(e) => setCarb(e.target.value)}
           />
