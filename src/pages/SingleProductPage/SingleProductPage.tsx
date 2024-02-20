@@ -1,16 +1,17 @@
 //@ts-nocheck
 
-import Header from '../../components/Header';
-import Footer from '../../components/Footer';
-
-import styles from './SingleProductPage.module.scss';
-
-import NutritionChart from '../../components/NutritionChart/NutritionChart';
-
 import { useParams } from 'react-router-dom';
 import { useAppSelector, useAppDispatch } from '../../redux/hooks';
 import { writeSubtitle, writeUrl } from '../../redux/productSlice';
 import { useState } from 'react';
+
+import Header from '../../components/Header';
+import Footer from '../../components/Footer';
+import ProductPhoto from '../../components/ProductPhoto/ProductPhoto';
+import UrlInput from '../../components/UrlInput/UrlInput';
+import NutritionChart from '../../components/NutritionChart/NutritionChart';
+
+import styles from './SingleProductPage.module.scss';
 
 const SingleProductPage = () => {
   const { id } = useParams();
@@ -47,6 +48,7 @@ const SingleProductPage = () => {
 
   const handleOpenUrlInput = () => {
     setIsOpenUrlInput(!isOpenUrlInput);
+    console.log('Функция работает!');
   };
 
   return (
@@ -54,21 +56,11 @@ const SingleProductPage = () => {
       <Header />
       <div className={styles.card}>
         {imageUrl ? (
-          <div>
-            <img width={140} height={140} src={imageUrl} alt="photo" />
-          </div>
+          <ProductPhoto imageUrl={imageUrl} handleOpenUrlInput={handleOpenUrlInput} />
         ) : (
           <div className={styles.notPhoto}>
             {isOpenUrlInput ? (
-              <div className={styles.urlInput}>
-                <input
-                  value={imageUrl}
-                  type="text"
-                  placeholder="введите url картинки"
-                  onChange={handleRewriteUrl}
-                />
-                <button>📌</button>
-              </div>
+              <UrlInput imageUrl={imageUrl} handleRewriteUrl={handleRewriteUrl} />
             ) : (
               <button onClick={handleOpenUrlInput}>📷</button>
             )}
