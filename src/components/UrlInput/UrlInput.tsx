@@ -1,11 +1,12 @@
 interface Props {
   imageUrl: string;
   handleRewriteUrl: () => void;
+  handleOpenUrlInput: () => void;
 }
 
 import styles from './UrlInput.module.scss';
 
-const UrlInput = ({ imageUrl, handleRewriteUrl }: Props) => {
+const UrlInput = ({ imageUrl, handleRewriteUrl, handleOpenUrlInput }: Props) => {
   return (
     <div className={styles.urlInput}>
       <input
@@ -14,7 +15,7 @@ const UrlInput = ({ imageUrl, handleRewriteUrl }: Props) => {
         placeholder="введите url картинки"
         onChange={handleRewriteUrl}
       />
-      <button>📌</button>
+      <button onClick={handleOpenUrlInput}>📌</button>
     </div>
   );
 };

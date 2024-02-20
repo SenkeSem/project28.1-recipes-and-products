@@ -48,7 +48,6 @@ const SingleProductPage = () => {
 
   const handleOpenUrlInput = () => {
     setIsOpenUrlInput(!isOpenUrlInput);
-    console.log('Функция работает!');
   };
 
   return (
@@ -59,12 +58,15 @@ const SingleProductPage = () => {
           <ProductPhoto imageUrl={imageUrl} handleOpenUrlInput={handleOpenUrlInput} />
         ) : (
           <div className={styles.notPhoto}>
-            {isOpenUrlInput ? (
-              <UrlInput imageUrl={imageUrl} handleRewriteUrl={handleRewriteUrl} />
-            ) : (
-              <button onClick={handleOpenUrlInput}>📷</button>
-            )}
+            <button onClick={handleOpenUrlInput}>📷</button>
           </div>
+        )}
+        {isOpenUrlInput && (
+          <UrlInput
+            imageUrl={imageUrl}
+            handleOpenUrlInput={handleOpenUrlInput}
+            handleRewriteUrl={handleRewriteUrl}
+          />
         )}
 
         <h1>{product?.title}</h1>
