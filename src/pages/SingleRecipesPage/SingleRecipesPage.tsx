@@ -1,28 +1,60 @@
+//@ts-nocheck
+
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
+import NoSubtitleBlock from '../../components/NoSubtitleBlock/NoSubtitleBlock';
+import TextAreaBlock from '../../components/TextAreaBlock/TextAreaBlock';
 
 import styles from './SingleRecipesPage.module.scss';
 
 import { useParams } from 'react-router-dom';
-import { useAppSelector } from '../../redux/hooks';
+import { useAppSelector, useAppDispatch } from '../../redux/hooks';
+import { useState } from 'react';
+import { writeSubtitle } from '../../redux/recipeSlice';
+import SubtitleBlock from '../../components/SubtitleBlock/SubtitleBlock';
 
 const SingleRecipesPage: React.FC = () => {
   const { id } = useParams();
+  const dispatch = useAppDispatch();
 
-  const recipe = useAppSelector((state) => state.recipes.recipes).find((obj) => obj.id === id);
+  const [isSubtitleEdit, setIsSubtitleEdit] = useState(false);
+
+  const { imageUrl, title, subtitle } = useAppSelector((state) => state.recipes.recipes).find(
+    (obj) => obj.id === id,
+  );
+
+  const handleOpenEdit = () => {
+    setIsSubtitleEdit(!isSubtitleEdit);
+  };
+
+  const handleRewriteSubtitle = (e) => {
+    dispatch(
+      writeSubtitle({
+        id: id,
+        subtitle: e.target.value,
+      }),
+    );
+  };
 
   return (
     <div className={styles.container}>
       <Header />
       <main>
-        <img src={recipe?.imageUrl} alt="photo" />
+        <img src={imageUrl} alt="photo" />
         <section>
-          <h3>{recipe?.title}</h3>
-          <i>
-            Омлет на молоке - один из самых вкусных, простых и любимых омлетов. Молоко делает омлет
-            нежным, лёгким, достаточно пышным и очень вкусным. Омлет на молоке - прекрасный вариант
-            для завтрака!
-          </i>
+          <h3>{title}</h3>
+
+          {isSubtitleEdit ? (
+            <TextAreaBlock
+              subtitle={subtitle}
+              handleRewriteSubtitle={handleRewriteSubtitle}
+              handleOpenEdit={handleOpenEdit}
+            />
+          ) : subtitle ? (
+            <SubtitleBlock subtitle={subtitle} handleOpenEdit={handleOpenEdit} />
+          ) : (
+            <NoSubtitleBlock handleOpenEdit={handleOpenEdit} />
+          )}
         </section>
         <section className={styles.purpleContainer}>
           <h4>Время приготовления</h4>

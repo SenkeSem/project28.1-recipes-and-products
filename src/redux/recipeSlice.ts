@@ -10,6 +10,11 @@ type Recipe = {
   time?: [];
 };
 
+type SubtitleObject = {
+  id?: string;
+  subtitle?: string | undefined;
+};
+
 type RecipeState = {
   recipes: Recipe[];
 };
@@ -33,9 +38,17 @@ export const recipeSlice = createSlice({
     removeRecipe(state, action: PayloadAction<string | undefined>) {
       state.recipes = state.recipes.filter((prod) => prod.id !== action.payload);
     },
+
+    writeSubtitle(state, action: PayloadAction<SubtitleObject>) {
+      state.recipes.map((recipe) => {
+        if (recipe.id === action.payload.id) {
+          recipe.subtitle = action.payload.subtitle;
+        }
+      });
+    },
   },
 });
 
-export const { addRecipe, removeRecipe } = recipeSlice.actions;
+export const { addRecipe, removeRecipe, writeSubtitle } = recipeSlice.actions;
 
 export default recipeSlice.reducer;
