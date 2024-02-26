@@ -3,29 +3,22 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  flex-grow: 1;
-  background-color: #f5d04e;
 
   height: 100vh;
+  background-color: #f5d04e;
 
   .card {
     position: relative;
 
-    padding: 20px;
     width: 600px;
+    padding: 20px;
+
     border: 1px solid black;
     border-radius: 20px;
     background-color: white;
     box-shadow: 10px 10px black;
 
     article {
-      display: flex;
-      flex-direction: row;
-      align-items: start;
-      justify-content: space-between;
-      width: 70%;
-      height: auto;
-
       padding: 5px;
       margin-bottom: 10px;
 
@@ -85,7 +78,6 @@
       float: right;
       margin-left: 20px;
       margin-bottom: 20px;
-
       border-radius: 20px;
     }
   }

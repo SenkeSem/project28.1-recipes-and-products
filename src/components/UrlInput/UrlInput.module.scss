@@ -1,5 +1,12 @@
 .urlInput {
   position: absolute;
+  padding: 5px;
+
   top: 25px;
-  right: -250px;
+  right: -270px;
+
+  background-color: white;
+  border-radius: 5px;
+  border: 1px solid black;
+  box-shadow: 10px 10px black;
 }

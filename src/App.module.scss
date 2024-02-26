@@ -36,7 +36,7 @@ dd {
 
 /* Выставляем основные настройки по-умолчанию для body */
 body {
-  min-height: 100vh;
+  max-height: 100vh;
   scroll-behavior: smooth;
   text-rendering: optimizeSpeed;
   line-height: 1.5;

@@ -1,6 +1,8 @@
+import styles from './Footer.module.scss';
+
 export default function Footer() {
   return (
-    <footer style={{ marginBottom: 20, marginTop: 20, flexShrink: 0 }}>
+    <footer className={styles.container}>
       <p>Все права защищены ©. 2024. Created by Сенькевич Семён Юрьевич</p>
     </footer>
   );

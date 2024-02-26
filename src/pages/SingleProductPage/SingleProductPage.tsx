@@ -105,7 +105,9 @@ const SingleProductPage = () => {
             )}
           </article>
         )}
-        <NutritionChart calories={calories} protein={protein} fat={fat} carb={carb} />
+        {calories > 0 && (
+          <NutritionChart calories={calories} protein={protein} fat={fat} carb={carb} />
+        )}
       </div>
       <Footer />
     </div>
