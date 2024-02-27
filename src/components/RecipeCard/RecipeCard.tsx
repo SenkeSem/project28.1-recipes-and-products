@@ -16,7 +16,7 @@ const RecipeCard = ({ id, title, handleRemoveRecupe }: Props) => {
       <img
         width={24}
         height={24}
-        src="/src/assets/remove.svg"
+        src="/public/remove.svg"
         alt="remove"
         onClick={handleRemoveRecupe}
       />

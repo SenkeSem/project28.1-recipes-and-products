@@ -8,7 +8,7 @@ const NoSubtitleBlock = ({ handleOpenEdit }: Props) => {
   return (
     <div className={styles.preSubtitle}>
       <p>Укажите описание</p>
-      <img onClick={handleOpenEdit} src="/../src/assets/pencil.svg" alt="pencil" />
+      <img onClick={handleOpenEdit} src="/public/pencil.svg" alt="pencil" />
     </div>
   );
 };

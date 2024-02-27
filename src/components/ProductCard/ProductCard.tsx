@@ -29,7 +29,7 @@ const ProductCard = ({ id, handleRemoveProduct }: Props) => {
           onClick={handleRemoveProduct}
           width={17}
           height={17}
-          src="/src/assets/remove.svg"
+          src="/public/remove.svg"
           alt="remove"
         />
       </section>
