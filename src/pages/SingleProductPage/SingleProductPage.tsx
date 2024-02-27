@@ -10,9 +10,11 @@ import Footer from '../../components/Footer';
 import ProductPhoto from '../../components/ProductPhoto/ProductPhoto';
 import UrlInput from '../../components/UrlInput/UrlInput';
 import NutritionChart from '../../components/NutritionChart/NutritionChart';
+import TextAreaBlock from '../../components/TextAreaBlock/TextAreaBlock';
 
 import styles from './SingleProductPage.module.scss';
-import TextAreaBlock from '../../components/TextAreaBlock/TextAreaBlock';
+import SubtitleBlock from '../../components/SubtitleBlock/SubtitleBlock';
+import NoSubtitleBlock from '../../components/NoSubtitleBlock/NoSubtitleBlock';
 
 const SingleProductPage = () => {
   const { id } = useParams();
@@ -63,6 +65,7 @@ const SingleProductPage = () => {
               <button onClick={handleOpenUrlInput}>📷</button>
             </div>
           )}
+
           {isOpenUrlInput && (
             <UrlInput
               imageUrl={imageUrl}
@@ -79,35 +82,12 @@ const SingleProductPage = () => {
               handleRewriteSubtitle={handleRewriteSubtitle}
               handleOpenEdit={handleOpenEdit}
             />
+          ) : subtitle ? (
+            <SubtitleBlock subtitle={subtitle} handleOpenEdit={handleOpenEdit} />
           ) : (
-            <article>
-              {!subtitle ? (
-                <div className={styles.preSubtitle}>
-                  <p>Укажите описание продукта</p>
-                  <img
-                    width={20}
-                    height={20}
-                    src="/../src/assets/pencil.svg"
-                    alt="pencil"
-                    onClick={handleOpenEdit}
-                  />
-                </div>
-              ) : (
-                <div className={styles.mainSubtitle}>
-                  <p>
-                    {subtitle}
-                    <img
-                      width={20}
-                      height={20}
-                      src="/../src/assets/pencil.svg"
-                      alt="pencil"
-                      onClick={handleOpenEdit}
-                    />
-                  </p>
-                </div>
-              )}
-            </article>
+            <NoSubtitleBlock handleOpenEdit={handleOpenEdit} />
           )}
+
           {calories > 0 && (
             <NutritionChart calories={calories} protein={protein} fat={fat} carb={carb} />
           )}

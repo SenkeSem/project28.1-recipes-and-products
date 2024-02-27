@@ -1,13 +1,10 @@
 .preSubtitle {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
   flex-direction: row;
-  gap: 20px;
-
-  width: 100%;
+  justify-content: space-between;
 
   padding: 5px;
+  margin-bottom: 15px;
   border-radius: 5px;
   border: 1px dashed black;
 

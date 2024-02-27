@@ -8,7 +8,7 @@ interface Props {
 const SubtitleBlock = ({ subtitle, handleOpenEdit }: Props) => {
   return (
     <div className={styles.subtitle}>
-      <i>{subtitle}</i>
+      <p>{subtitle}</p>
       <img onClick={handleOpenEdit} src="/../src/assets/pencil.svg" alt="pencil" />
     </div>
   );
