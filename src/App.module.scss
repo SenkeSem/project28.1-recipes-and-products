@@ -34,9 +34,17 @@ dd {
   margin: 0;
 }
 
+html,
+body {
+  height: 100%;
+}
+
+.container {
+  height: 100%;
+}
+
 /* Выставляем основные настройки по-умолчанию для body */
 body {
-  max-height: 100vh;
   scroll-behavior: smooth;
   text-rendering: optimizeSpeed;
   line-height: 1.5;

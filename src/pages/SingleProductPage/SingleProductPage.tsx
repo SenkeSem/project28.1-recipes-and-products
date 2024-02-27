@@ -12,6 +12,7 @@ import UrlInput from '../../components/UrlInput/UrlInput';
 import NutritionChart from '../../components/NutritionChart/NutritionChart';
 
 import styles from './SingleProductPage.module.scss';
+import TextAreaBlock from '../../components/TextAreaBlock/TextAreaBlock';
 
 const SingleProductPage = () => {
   const { id } = useParams();
@@ -24,7 +25,7 @@ const SingleProductPage = () => {
 
   const { subtitle, calories, protein, fat, carb, imageUrl } = product;
 
-  const handleEdit = () => {
+  const handleOpenEdit = () => {
     setIsEdit(!isEdit);
   };
 
@@ -51,64 +52,67 @@ const SingleProductPage = () => {
   };
 
   return (
-    <div className={styles.container}>
+    <div className={styles.wrapper}>
       <Header />
-      <div className={styles.card}>
-        {imageUrl ? (
-          <ProductPhoto imageUrl={imageUrl} handleOpenUrlInput={handleOpenUrlInput} />
-        ) : (
-          <div className={styles.notPhoto}>
-            <button onClick={handleOpenUrlInput}>📷</button>
-          </div>
-        )}
-        {isOpenUrlInput && (
-          <UrlInput
-            imageUrl={imageUrl}
-            handleOpenUrlInput={handleOpenUrlInput}
-            handleRewriteUrl={handleRewriteUrl}
-          />
-        )}
+      <main>
+        <div className={styles.card}>
+          {imageUrl ? (
+            <ProductPhoto imageUrl={imageUrl} handleOpenUrlInput={handleOpenUrlInput} />
+          ) : (
+            <div className={styles.notPhoto}>
+              <button onClick={handleOpenUrlInput}>📷</button>
+            </div>
+          )}
+          {isOpenUrlInput && (
+            <UrlInput
+              imageUrl={imageUrl}
+              handleOpenUrlInput={handleOpenUrlInput}
+              handleRewriteUrl={handleRewriteUrl}
+            />
+          )}
 
-        <h1>{product?.title}</h1>
+          <h1>{product?.title}</h1>
 
-        {isEdit ? (
-          <article>
-            <textarea value={subtitle} onChange={handleRewriteSubtitle}></textarea>
-            <button onClick={handleEdit}>📌</button>
-          </article>
-        ) : (
-          <article>
-            {!subtitle ? (
-              <div className={styles.preSubtitle}>
-                <p>Укажите описание продукта</p>
-                <img
-                  width={20}
-                  height={20}
-                  src="/../src/assets/pencil.svg"
-                  alt="pencil"
-                  onClick={handleEdit}
-                />
-              </div>
-            ) : (
-              <div className={styles.mainSubtitle}>
-                <p>
-                  {subtitle}
+          {isEdit ? (
+            <TextAreaBlock
+              subtitle={subtitle}
+              handleRewriteSubtitle={handleRewriteSubtitle}
+              handleOpenEdit={handleOpenEdit}
+            />
+          ) : (
+            <article>
+              {!subtitle ? (
+                <div className={styles.preSubtitle}>
+                  <p>Укажите описание продукта</p>
                   <img
                     width={20}
                     height={20}
                     src="/../src/assets/pencil.svg"
                     alt="pencil"
-                    onClick={handleEdit}
+                    onClick={handleOpenEdit}
                   />
-                </p>
-              </div>
-            )}
-          </article>
-        )}
-        {calories > 0 && (
-          <NutritionChart calories={calories} protein={protein} fat={fat} carb={carb} />
-        )}
-      </div>
+                </div>
+              ) : (
+                <div className={styles.mainSubtitle}>
+                  <p>
+                    {subtitle}
+                    <img
+                      width={20}
+                      height={20}
+                      src="/../src/assets/pencil.svg"
+                      alt="pencil"
+                      onClick={handleOpenEdit}
+                    />
+                  </p>
+                </div>
+              )}
+            </article>
+          )}
+          {calories > 0 && (
+            <NutritionChart calories={calories} protein={protein} fat={fat} carb={carb} />
+          )}
+        </div>
+      </main>
       <Footer />
     </div>
   );

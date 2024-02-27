@@ -1,84 +1,90 @@
-.container {
+.wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
 
-  height: 100vh;
+  min-height: 100%;
   background-color: #f5d04e;
 
-  .card {
-    position: relative;
+  main {
+    flex-grow: 1;
 
-    width: 600px;
-    padding: 20px;
+    display: flex;
+    align-items: center;
 
-    border: 1px solid black;
-    border-radius: 20px;
-    background-color: white;
-    box-shadow: 10px 10px black;
+    .card {
+      position: relative;
 
-    article {
-      padding: 5px;
-      margin-bottom: 10px;
+      width: 600px;
+      padding: 20px;
 
-      textarea {
-        width: 90%;
-        height: 25vh;
+      border: 1px solid black;
+      border-radius: 20px;
+      background-color: white;
+      box-shadow: 10px 10px black;
+
+      article {
+        padding: 5px;
+        margin-bottom: 10px;
+
+        textarea {
+          width: 90%;
+          height: 25vh;
+        }
+
+        img {
+          cursor: pointer;
+          margin: 0;
+        }
+      }
+
+      p {
+        color: gray;
+      }
+
+      .preSubtitle {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-direction: row;
+        gap: 20px;
+
+        width: 100%;
+
+        padding: 5px;
+        border-radius: 5px;
+        border: 1px dashed black;
+      }
+
+      .mainSubtitle {
+        img {
+          margin-left: 10px;
+        }
+      }
+
+      .notPhoto {
+        float: right;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        width: 140px;
+        height: 140px;
+        border: 1px dashed gray;
+        border-radius: 20px;
+
+        button {
+          cursor: pointer;
+        }
       }
 
       img {
-        cursor: pointer;
-        margin: 0;
+        float: right;
+        margin-left: 20px;
+        margin-bottom: 20px;
+        border-radius: 20px;
       }
-    }
-
-    p {
-      color: gray;
-    }
-
-    .preSubtitle {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-direction: row;
-      gap: 20px;
-
-      width: 100%;
-
-      padding: 5px;
-      border-radius: 5px;
-      border: 1px dashed black;
-    }
-
-    .mainSubtitle {
-      img {
-        margin-left: 10px;
-      }
-    }
-
-    .notPhoto {
-      float: right;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      width: 140px;
-      height: 140px;
-      border: 1px dashed gray;
-      border-radius: 20px;
-
-      button {
-        cursor: pointer;
-      }
-    }
-
-    img {
-      float: right;
-      margin-left: 20px;
-      margin-bottom: 20px;
-      border-radius: 20px;
     }
   }
 }
