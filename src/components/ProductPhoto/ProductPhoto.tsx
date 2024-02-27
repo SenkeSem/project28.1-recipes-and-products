@@ -8,7 +8,7 @@ import styles from './ProductPhoto.module.scss';
 const ProductPhoto = ({ imageUrl, handleOpenUrlInput }: Props) => {
   return (
     <div className={styles.container}>
-      <img width={140} height={140} src={imageUrl} alt="photo" />
+      <div className={styles.image} style={{ backgroundImage: `url(${imageUrl})` }}></div>
       <button onClick={handleOpenUrlInput}>⟳</button>
     </div>
   );

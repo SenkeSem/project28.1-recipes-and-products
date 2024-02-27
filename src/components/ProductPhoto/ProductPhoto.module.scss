@@ -1,6 +1,16 @@
 .container {
   position: relative;
 
+  .image {
+    float: right;
+    width: 140px;
+    height: 140px;
+    border-radius: 16px;
+
+    background-position: center;
+    background-size: cover;
+  }
+
   button {
     opacity: 0;
     cursor: pointer;
