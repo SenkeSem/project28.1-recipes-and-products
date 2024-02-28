@@ -40,7 +40,7 @@ const SingleRecipesPage: React.FC = () => {
     <div className={styles.container}>
       <Header />
       <main>
-        <img src={imageUrl} alt="photo" />
+        <figure style={{ backgroundImage: `url(${imageUrl})` }}></figure>
         <section>
           <h3>{title}</h3>
 
