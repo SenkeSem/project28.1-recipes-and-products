@@ -12,6 +12,8 @@ import { useAppSelector, useAppDispatch } from '../../redux/hooks';
 import { useState } from 'react';
 import { writeSubtitle } from '../../redux/recipeSlice';
 import SubtitleBlock from '../../components/SubtitleBlock/SubtitleBlock';
+import IngredientsList from '../../components/IngredientsList/IngredientsList';
+import IngredientsHeader from '../../components/IngredientsHeader/IngredientsHeader';
 
 const SingleRecipesPage: React.FC = () => {
   const { id } = useParams();
@@ -71,13 +73,8 @@ const SingleRecipesPage: React.FC = () => {
           </ul>
         </section>
         <section>
-          <h4>Ингредиенты</h4>
-          <ul>
-            <li>яйца</li>
-            <li>молоко</li>
-            <li>соль</li>
-            <li>перец</li>
-          </ul>
+          <IngredientsHeader />
+          <IngredientsList />
         </section>
         <section className={styles.instructions}>
           <h4>Инструкция</h4>

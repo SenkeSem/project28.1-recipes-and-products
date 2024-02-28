@@ -4,8 +4,9 @@
   gap: 5px;
 
   textarea {
-    height: 200px;
-    resize: vertical;
+    height: 300px;
+    outline: none;
+    resize: none;
   }
 
   button {

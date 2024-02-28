@@ -1,0 +1,30 @@
+.wrapper {
+  position: relative;
+  display: flex;
+  gap: 15px;
+
+  section {
+    position: absolute;
+    top: -15px;
+    left: 130px;
+
+    input {
+      border-radius: 10px;
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+
+    ul {
+      position: absolute;
+      top: 30px;
+      left: 26px;
+      padding: 0;
+      width: 150px;
+
+      li {
+        list-style-type: none;
+        width: 150px;
+      }
+    }
+  }
+}
