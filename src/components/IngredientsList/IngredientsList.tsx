@@ -1,5 +1,8 @@
 import { useParams } from 'react-router-dom';
 import { useAppSelector } from '../../redux/hooks';
+import IngredientBlock from '../IngredientBlock/IngredientBlock';
+
+import styles from './IngredientsList.module.scss';
 
 const IngredientsList = () => {
   const { id } = useParams();
@@ -9,11 +12,11 @@ const IngredientsList = () => {
   );
 
   return (
-    <ul>
+    <div className={styles.wrapper}>
       {recipe?.ingredients?.map((ingredient) => (
-        <li>{ingredient}</li>
+        <IngredientBlock ingredient={ingredient} />
       ))}
-    </ul>
+    </div>
   );
 };
 

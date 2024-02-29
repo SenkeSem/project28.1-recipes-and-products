@@ -29,7 +29,7 @@ const IngredientsHeader = () => {
           onChange={handleGetProduct}
           placeholder="Найдите продукт"
         />
-        <ul>
+        <ul className={inputValue.length > 0 ? styles.activeList : ''}>
           {inputValue.length > 0 &&
             product.map((prod) => <ProductSearchItem key={prod.id} title={prod.title} />)}
         </ul>
