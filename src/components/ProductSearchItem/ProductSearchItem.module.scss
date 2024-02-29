@@ -1,0 +1,27 @@
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  list-style-type: none;
+
+  img {
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+
+    &:hover {
+      border: 1px solid black;
+      border-radius: 20px;
+      box-shadow: 2px 2px 2px black;
+    }
+
+    &:active {
+      border: 0.5px solid gray;
+      transform: translateX(3px);
+      transform: translateY(2px);
+      box-shadow: none;
+    }
+  }
+}

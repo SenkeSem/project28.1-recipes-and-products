@@ -9,6 +9,7 @@
     left: 130px;
 
     input {
+      width: 200px;
       border-radius: 10px;
       padding-left: 10px;
       padding-right: 10px;
@@ -19,12 +20,7 @@
       top: 30px;
       left: 26px;
       padding: 0;
-      width: 150px;
-
-      li {
-        list-style-type: none;
-        width: 150px;
-      }
+      width: 180px;
     }
   }
 }
