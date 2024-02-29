@@ -61,9 +61,20 @@ export const recipeSlice = createSlice({
         }
       });
     },
+
+    removeIngredient(state, action: PayloadAction<IngredientObject>) {
+      state.recipes.map((recipe) => {
+        if (recipe.id === action.payload.id) {
+          recipe.ingredients = recipe.ingredients?.filter(
+            (ingredient) => ingredient !== action.payload.ingredient,
+          );
+        }
+      });
+    },
   },
 });
 
-export const { addRecipe, removeRecipe, writeSubtitle, addIngredient } = recipeSlice.actions;
+export const { addRecipe, removeRecipe, writeSubtitle, addIngredient, removeIngredient } =
+  recipeSlice.actions;
 
 export default recipeSlice.reducer;
