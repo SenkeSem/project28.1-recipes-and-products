@@ -13,13 +13,7 @@ const RecipeCard = ({ id, title, handleRemoveRecupe }: Props) => {
       <Link to={`/recipes/${id}`}>
         <h2>{title}</h2>
       </Link>
-      <img
-        width={24}
-        height={24}
-        src="/public/remove.svg"
-        alt="remove"
-        onClick={handleRemoveRecupe}
-      />
+      <img width={24} height={24} src="/remove.svg" alt="remove" onClick={handleRemoveRecupe} />
     </div>
   );
 };

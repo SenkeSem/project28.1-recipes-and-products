@@ -9,7 +9,7 @@ const SubtitleBlock = ({ subtitle, handleOpenEdit }: Props) => {
   return (
     <div className={styles.subtitle}>
       <p>{subtitle}</p>
-      <img onClick={handleOpenEdit} src="/public/pencil.svg" alt="pencil" />
+      <img onClick={handleOpenEdit} src="/pencil.svg" alt="pencil" />
     </div>
   );
 };

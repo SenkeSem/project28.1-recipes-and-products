@@ -25,13 +25,7 @@ const ProductCard = ({ id, handleRemoveProduct }: Props) => {
         <span>
           {product?.calories}/{product?.protein}/{product?.fat}/{product?.carb}
         </span>
-        <img
-          onClick={handleRemoveProduct}
-          width={17}
-          height={17}
-          src="/public/remove.svg"
-          alt="remove"
-        />
+        <img onClick={handleRemoveProduct} width={17} height={17} src="/remove.svg" alt="remove" />
       </section>
     </div>
   );

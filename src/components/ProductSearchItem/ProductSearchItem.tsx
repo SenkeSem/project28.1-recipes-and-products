@@ -22,7 +22,7 @@ const ProductSearchItem = ({ title }: Props) => {
 
   return (
     <li className={styles.wrapper}>
-      {title} <img onClick={handleAddIngredient} src="/public/plus.svg" alt="plus" />
+      {title} <img onClick={handleAddIngredient} src="/plus.svg" alt="plus" />
     </li>
   );
 };

@@ -31,13 +31,7 @@ const IngredientBlock = ({ ingredient }: Props) => {
       <Link to={`/products/${product?.id}`}>
         <p>{ingredient}</p>
       </Link>
-      <img
-        onClick={handleRemoveIngredient}
-        width={20}
-        height={20}
-        src="/public/cross.svg"
-        alt="cross"
-      />
+      <img onClick={handleRemoveIngredient} width={20} height={20} src="/cross.svg" alt="cross" />
     </div>
   );
 };
