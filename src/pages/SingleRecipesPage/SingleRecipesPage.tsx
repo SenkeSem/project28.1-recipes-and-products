@@ -14,6 +14,9 @@ import { writeSubtitle } from '../../redux/recipeSlice';
 import SubtitleBlock from '../../components/SubtitleBlock/SubtitleBlock';
 import IngredientsList from '../../components/IngredientsList/IngredientsList';
 import IngredientsHeader from '../../components/IngredientsHeader/IngredientsHeader';
+import NutritionFacts from '../../components/NutritionFacts/NutritionFacts';
+import InstructionsHeader from '../../components/InstructionsHeader/InstructionsHeader';
+import InstructionsList from '../../components/InstructionsList/InstructionsList';
 
 const SingleRecipesPage: React.FC = () => {
   const { id } = useParams();
@@ -77,41 +80,12 @@ const SingleRecipesPage: React.FC = () => {
           <IngredientsList />
         </section>
         <section className={styles.instructions}>
-          <h4>Инструкция</h4>
-          <ul>
-            <li>Яйца выпустить в миску</li>
-            <li>Влить в яйца молоко.</li>
-            <li>
-              Добавить муку и соль. По желанию можно добавить щепотку сахара, но я предпочитаю без
-              него.
-            </li>
-            <li>Тщательно взбить смесь венчиком или просто вилкой до однородности.</li>
-            <li>Влить яичную смесь на разогретую с растительным маслом сковороду.</li>
-            <li>Накрыть сковороду крышкой.</li>
-            <li>Выпекать омлет на сковороде минут 10-15 на небольшом огне до готовности.</li>
-            <li>
-              Омлет должен подняться и пропечься. По желанию омлет можно перевернуть и обжарить с
-              другой стороны.
-            </li>
-            <li>Наш классический омлет готов. Приятного аппетита!</li>
-          </ul>
+          <InstructionsHeader />
+          <InstructionsList />
         </section>
         <section>
           <h4>Энергетическая ценность</h4>
-          <ul>
-            <li>
-              Калории: <b>431</b> ккал
-            </li>
-            <li>
-              Белки: <b>32</b> гр
-            </li>
-            <li>
-              Жиры: <b>20</b> гр
-            </li>
-            <li>
-              Углеводы: <b>90</b> гр
-            </li>
-          </ul>
+          <NutritionFacts />
         </section>
       </main>
       <Footer />
