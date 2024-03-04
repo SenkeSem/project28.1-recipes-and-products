@@ -3,6 +3,7 @@ import { useAppSelector } from '../../redux/hooks';
 import IngredientBlock from '../IngredientBlock/IngredientBlock';
 
 import styles from './IngredientsList.module.scss';
+import NoIngredientsBlock from '../NoIngredientsBlock/NoIngredientsBlock';
 
 const IngredientsList = () => {
   const { id } = useParams();
@@ -13,9 +14,11 @@ const IngredientsList = () => {
 
   return (
     <div className={styles.wrapper}>
-      {recipe?.ingredients?.map((ingredient) => (
-        <IngredientBlock ingredient={ingredient} />
-      ))}
+      {recipe?.ingredients?.length ? (
+        recipe?.ingredients?.map((ingredient) => <IngredientBlock ingredient={ingredient} />)
+      ) : (
+        <NoIngredientsBlock />
+      )}
     </div>
   );
 };
