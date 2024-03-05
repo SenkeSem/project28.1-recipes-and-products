@@ -45,7 +45,7 @@ const InstructionsHeader = () => {
             ref={myRef}
             value={areaValue}
             onChange={(e) => setAreaValue(e.target.value)}
-            placeholder="Поле для ввода пунтка инструкции к рецепту..."></textarea>
+            placeholder="Поле для ввода пункта инструкции к рецепту..."></textarea>
           <div>
             <img onClick={handleAddInstruction} src="/check.svg" alt="check" />
             <img onClick={handleClearArea} src="/clear.svg" alt="clear" />

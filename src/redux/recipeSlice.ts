@@ -86,6 +86,16 @@ export const recipeSlice = createSlice({
         }
       });
     },
+
+    removeInstruction(state, action: PayloadAction<InstructionObject>) {
+      state.recipes.map((recipe) => {
+        if (recipe.id === action.payload.id) {
+          recipe.instructions = recipe.instructions?.filter(
+            (item) => item !== action.payload.instruction,
+          );
+        }
+      });
+    },
   },
 });
 
@@ -96,6 +106,7 @@ export const {
   addIngredient,
   removeIngredient,
   addInstruction,
+  removeInstruction,
 } = recipeSlice.actions;
 
 export default recipeSlice.reducer;
