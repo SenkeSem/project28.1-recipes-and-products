@@ -23,7 +23,7 @@ const InstructionsBlock = ({ text }: Props) => {
 
   return (
     <li className={styles.wrapper}>
-      {text} <img onClick={handleRemoveInstruction} src="/public/close.svg" alt="close" />
+      {text} <img onClick={handleRemoveInstruction} src="/close.svg" alt="close" />
     </li>
   );
 };
