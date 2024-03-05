@@ -1,12 +1,31 @@
 .wrapper {
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 15px;
+  flex-direction: column;
+  gap: 5px;
+
+  h4 {
+    display: flex;
+  }
+
+  article {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+
+    textarea {
+      width: 100%;
+      padding: 10px 15px 10px 10px;
+
+      border-radius: 10px;
+      border: 1px solid rgb(0, 0, 0, 0.2);
+    }
+  }
 
   img {
     cursor: pointer;
-    width: 30px;
-    height: 30px;
+    width: 25px;
+    height: 25px;
+
+    margin-left: 10px;
   }
 }

@@ -3,6 +3,7 @@ import { useAppSelector } from '../../redux/hooks';
 import NoInstructionsBlock from '../NoInstructionsBlock/NoInstructionsBlock';
 
 import styles from './InstructionsList.module.scss';
+import InstructionsBlock from '../InstructionsBlock/InstructionsBlock';
 
 const InstructionsList = () => {
   const { id } = useParams();
@@ -13,7 +14,7 @@ const InstructionsList = () => {
   return (
     <ul className={styles.wrapper}>
       {recipe?.instructions?.length ? (
-        recipe?.instructions?.map((item) => <li>{item}</li>)
+        recipe?.instructions?.map((item) => <InstructionsBlock text={item} />)
       ) : (
         <NoInstructionsBlock />
       )}

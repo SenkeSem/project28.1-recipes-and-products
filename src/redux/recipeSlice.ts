@@ -20,6 +20,11 @@ type IngredientObject = {
   ingredient: string;
 };
 
+type InstructionObject = {
+  id: string | undefined;
+  instruction: string;
+};
+
 type RecipeState = {
   recipes: Recipe[];
 };
@@ -71,10 +76,26 @@ export const recipeSlice = createSlice({
         }
       });
     },
+
+    addInstruction(state, action: PayloadAction<InstructionObject>) {
+      state.recipes.map((recipe) => {
+        if (recipe.id === action.payload.id) {
+          recipe.instructions
+            ? recipe.instructions.push(action.payload.instruction)
+            : (recipe.instructions = [action.payload.instruction]);
+        }
+      });
+    },
   },
 });
 
-export const { addRecipe, removeRecipe, writeSubtitle, addIngredient, removeIngredient } =
-  recipeSlice.actions;
+export const {
+  addRecipe,
+  removeRecipe,
+  writeSubtitle,
+  addIngredient,
+  removeIngredient,
+  addInstruction,
+} = recipeSlice.actions;
 
 export default recipeSlice.reducer;
